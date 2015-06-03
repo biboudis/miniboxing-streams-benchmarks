@@ -37,6 +37,7 @@ object MyBuild extends Build {
   /** Settings for the miniboxing plugin */
   lazy val miniboxingSettings = Seq[Setting[_]](
     resolvers += Resolver.sonatypeRepo("snapshots"),
+    resolvers += Resolver.sonatypeRepo("releases"),
     libraryDependencies += "org.scala-miniboxing.plugins" %% "miniboxing-runtime" % "0.4-M4",
     addCompilerPlugin("org.scala-miniboxing.plugins" %% "miniboxing-plugin" % "0.4-M4"),
     scalacOptions ++= (
