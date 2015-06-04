@@ -8,3 +8,16 @@ OOPSLA'15).
 - Benchmark project is inspired by https://github.com/milosstojanovic/mb-benchmarks .
 - Miniboxing/ildl-plugin is in https://github.com/miniboxing/ildl-plugin . 
 - Streams library is based on https://github.com/biboudis/scala-streams .
+
+Benchmark the erased version by entering the following commands in the sbt
+```shell
+project erased
+run
+```
+
+Benchmark the miniboxing version by entering the following commands in the sbt
+
+```shell
+project miniboxed
+run
+```
