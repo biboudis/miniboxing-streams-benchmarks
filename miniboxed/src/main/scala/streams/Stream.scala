@@ -4,25 +4,8 @@ import scala.reflect.ClassTag
 import scala.collection.mutable.ArrayBuilder
 import scala.Array
 import scala.collection.mutable.ArrayBuffer
+import miniboxing.runtime.math.MiniboxedNumeric
 
-// `scala.Numeric` is not specialized nor miniboxed. In the future, the
-// miniboxing plugin will propose `miniboxing.Numeric` which is miniboxed:
-// see https://github.com/miniboxing/miniboxing-plugin/issues/154 for details
-trait Numeric[T] {
-  def plus(t1: T, t2: T): T
-  def zero: T
-}
-
-object `package` {
-  implicit object LongIsNumeric extends Numeric[Long] {
-    def plus(t1: Long, t2: Long) = t1 + t2
-    def zero: Long = 0
-  }
-  implicit object IntIsNumeric extends Numeric[Int] {
-    def plus(t1: Int, t2: Int) = t1 + t2
-    def zero: Int = 0
-  }
-}
 
 final class Stream[@miniboxed T: ClassTag](val streamf: (T => Boolean) => Unit) {
 
@@ -97,7 +80,7 @@ final class Stream[@miniboxed T: ClassTag](val streamf: (T => Boolean) => Unit) 
   def size(): Long =
     foldLeft(0L)((a: Long, _) => a + 1L)
 
-  def sum[@miniboxed N >: T](implicit num: Numeric[N]): N =
+  def sum[@miniboxed N >: T](implicit num: MiniboxedNumeric[N]): N =
     foldLeft(num.zero)(num.plus)
 }
 

@@ -7,7 +7,7 @@ object BenchmarkingTest extends ScalameterBenchTest
     with Serializable {
 
   // the number of independent samples to use
-  lazy val sampleCount = 10
+  lazy val sampleCount = 1
 
   // the command used to start the JVM
   // HotSpot:

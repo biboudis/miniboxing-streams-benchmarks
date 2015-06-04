@@ -21,13 +21,13 @@ object MyBuild extends Build {
   )
   
   lazy val erased = Project(
-  	"erased",
+  	"streams-erased",
   	file("erased"),
     settings = defaultSettings ++ scalameterSettings
   )
 
   lazy val miniboxed = Project(
-    "miniboxed",
+    "streams-miniboxed",
     file("miniboxed"),
     settings = defaultSettings ++ miniboxingSettings ++ scalameterSettings
   )
